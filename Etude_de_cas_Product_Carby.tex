@@ -1,0 +1,262 @@
+% ETUDE DE CAS PRODUCT - CARBY
+% Auteur : Gael Vanbeveren
+% Source factuelle : Rapport de presentation Carby (La Capsule Lyon, 2024)
+% Compiler : pdflatex Etude_de_cas_Product_Carby.tex (deux fois pour les liens).
+% Images MODIFIABLES : remplacer les 4 images dans ./images/ en conservant leur nom.
+% Pour modifier les noms : adapter les commandes \Img... ci-dessous.
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{tgheros}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{left=1.62cm,right=1.62cm,top=1.47cm,bottom=1.47cm}
+\usepackage{xcolor,graphicx,tikz,tcolorbox,hyperref,enumitem,tabularx,array,ragged2e,fancyhdr}
+\tcbuselibrary{skins}
+\usetikzlibrary{positioning,arrows.meta,calc}
+\usepackage{needspace}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\definecolor{navy}{HTML}{29465F}
+\definecolor{navydark}{HTML}{1D3245}
+\definecolor{teal}{HTML}{458369}
+\definecolor{ink}{HTML}{253441}
+\definecolor{muted}{HTML}{657987}
+\definecolor{light}{HTML}{F2F6F5}
+\definecolor{bluewash}{HTML}{F1F5F8}
+\definecolor{border}{HTML}{DCE4E7}
+\definecolor{white}{HTML}{FFFFFF}
+\color{ink}
+\hypersetup{hidelinks,pdftitle={Carby - Etude de cas Product - Gael Vanbeveren},pdfauthor={Gael Vanbeveren},pdfsubject={Discovery, conception UX, delivery Agile, arbitrages et apprentissages},pdfkeywords={Carby, Product Owner, Product Management, user journeys, priorisation, Trello, Agile, React Native}}
+\newcommand{\ImgInscription}{images/01_inscription.png}
+\newcommand{\ImgObjectifs}{images/02_objectifs.png}
+\newcommand{\ImgTrello}{images/03_trello_sprint1.jpg}
+\newcommand{\ImgStoryboard}{images/04_storyboard_final.jpg}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{label=\textcolor{teal}{\textbullet},leftmargin=1.25em,topsep=2pt,itemsep=3pt,parsep=0pt}
+\newtcolorbox{panel}[1][]{enhanced,sharp corners,boxrule=0pt,frame hidden,colback=light,boxsep=0pt,left=10pt,right=10pt,top=9pt,bottom=9pt,#1}
+\newtcolorbox{outlinepanel}[1][]{enhanced,sharp corners,boxrule=.55pt,colframe=border,colback=white,boxsep=0pt,left=11pt,right=11pt,top=10pt,bottom=10pt,#1}
+\newcommand{\eyebrow}[1]{{\fontsize{8.5}{10}\selectfont\bfseries\color{teal}\MakeUppercase{#1}}}
+\newcommand{\secname}[2]{{\fontsize{8.5}{10}\selectfont\bfseries\color{teal}#1}\hspace{7pt}{\fontsize{13.7}{16}\selectfont\bfseries\color{navy}#2}\par\vspace{7pt}}
+\newcommand{\captext}[1]{{\fontsize{7.5}{9}\selectfont\color{muted}#1}}
+\newcommand{\minihead}[1]{{\fontsize{9.1}{11.8}\selectfont\bfseries\color{navy}#1}\par\vspace{3pt}}
+\newcommand{\bodytext}[1]{{\fontsize{9.15}{12.35}\selectfont #1}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{.4pt}
+\fancyfoot[L]{{\fontsize{7.7}{10}\selectfont\color{muted}GAËL VANBEVEREN  \textbar\  PORTFOLIO PRODUIT}}
+\fancyfoot[R]{{\fontsize{7.7}{10}\selectfont\color{muted}CARBY  \textbar\  0\thepage / 02}}
+\setlength{\footskip}{21pt}
+\begin{document}
+\fontsize{9.2}{12.4}\selectfont
+\raggedright
+\thispagestyle{fancy}
+
+% --------------------- PAGE 1 ---------------------
+\begin{minipage}[t]{.73\linewidth}
+  \vspace{0pt}
+  \eyebrow{Étude de cas Product \quad / \quad Projet collectif 2024}\par\vspace{7pt}
+  {\fontsize{31}{33}\selectfont\bfseries\color{navydark}Carby\hspace{1pt}{\color{teal}.}}\par\vspace{5pt}
+  {\fontsize{13.2}{17.0}\selectfont\bfseries\color{navy}Concevoir une expérience mobile qui facilite l'adoption de gestes écoresponsables}\par
+\end{minipage}\hfill
+\begin{minipage}[t]{.22\linewidth}
+  \vspace{0pt}
+  \vspace{3pt}\raggedleft{\fontsize{9}{12}\selectfont\color{muted}La Capsule Lyon\\Mai 2024\\Conception + delivery}
+\end{minipage}
+\vspace{10pt}
+\color{border}\rule{\linewidth}{.7pt}\color{ink}
+\vspace{12pt}
+
+% Heros / visuels
+\noindent\begin{minipage}[t]{.55\linewidth}
+  \vspace{0pt}
+  \vspace{1pt}
+  \eyebrow{Le défi}\par\vspace{6pt}
+  {\fontsize{14.2}{18}\selectfont\bfseries\color{navy}Comment rendre des habitudes plus durables \emph{accessibles et motivantes} au quotidien ?}\par\vspace{9pt}
+  \bodytext{Carby est un prototype d'application mobile qui propose un \textbf{profil environnemental}, des \textbf{objectifs personnalisés} et des mécanismes ludiques (niveaux, points d'expérience, badges). Une dimension communautaire était également envisagée.}\par\vspace{13pt}
+  \begin{panel}[colback=bluewash]
+    \eyebrow{Mon rôle dans l'équipe}\par\vspace{5pt}
+    \bodytext{Contribution à la \textbf{conception des parcours}, à l'organisation du travail et au \textbf{développement front-end React Native} (dont authentification et intégration d'API). Rapport de projet rédigé pour présenter la démarche collective.}\par\vspace{4pt}
+    \captext{Projet à cinq personnes : les décisions produit et le delivery ont été menés en équipe, sans rôle officiel de Product Owner.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.42\linewidth}
+  \vspace{0pt}
+  \begin{panel}[colback=light,top=10pt,bottom=8pt,left=7pt,right=7pt]
+  \centering
+  \includegraphics[height=5.25cm]{\ImgInscription}\hspace{9pt}\includegraphics[height=5.25cm]{\ImgObjectifs}\par\vspace{5pt}
+  \captext{Écrans du prototype : inscription et objectifs quotidiens (Figma).}
+  \end{panel}
+\end{minipage}
+\vspace{12pt}
+
+% chiffres clefs
+\noindent\begin{minipage}[t]{.325\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[height=2.15cm]
+  \eyebrow{Cadre}\par\vspace{6pt}
+  {\fontsize{15.5}{18}\bfseries\color{navy}2 semaines}\par\vspace{2pt}
+  \captext{Délai de réalisation du projet}
+  \end{outlinepanel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.325\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[height=2.15cm]
+  \eyebrow{Organisation}\par\vspace{6pt}
+  {\fontsize{15.5}{18}\bfseries\color{navy}4 sprints}\par\vspace{2pt}
+  \captext{Tâches réparties et suivies dans Trello}
+  \end{outlinepanel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.325\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[height=2.15cm]
+  \eyebrow{Équipe}\par\vspace{6pt}
+  {\fontsize{15.5}{18}\bfseries\color{navy}5 membres}\par\vspace{2pt}
+  \captext{Conception et réalisation collectives}
+  \end{outlinepanel}
+\end{minipage}
+\vspace{17pt}
+
+\secname{01}{Comprendre les utilisateurs avant de construire}
+\bodytext{L'équipe a confronté ses premières propositions de \textbf{storyboards} à un panel de quatre personnes, puis documenté des \textbf{user journeys} pour identifier ce qui pouvait freiner la compréhension et l'engagement.}
+\vspace{9pt}
+
+\noindent\begin{minipage}[t]{.323\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.53cm]
+    \minihead{Observer}
+    \bodytext{Recueillir les impressions sur l'inscription, le questionnaire initial, le profil et les objectifs.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.323\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.53cm]
+    \minihead{Identifier les irritants}
+    \bodytext{Questions trop longues, navigation à raccourcir, fonctionnement des badges et des objectifs peu explicite.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.323\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.53cm]
+    \minihead{Adapter les parcours}
+    \bodytext{Prévoir un message d'aide sur le profil, ajuster les questions et expliciter la validation des objectifs.}
+  \end{panel}
+\end{minipage}
+\vspace{12pt}
+\noindent\begin{minipage}[t]{.59\linewidth}
+  \vspace{0pt}
+  \begin{panel}[colback=bluewash,height=2.95cm]
+    \eyebrow{Décision UX marquante}\par\vspace{6pt}
+    \bodytext{\textbf{Simplifier l'accès au profil} et prévoir des explications contextuelles sur les badges et les objectifs. Les pistes d'amélioration sont détaillées dans les user journeys.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.39\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[left=5pt,right=5pt,top=6pt,bottom=5pt,height=2.95cm]
+    \centering\includegraphics[height=1.95cm]{\ImgStoryboard}\par\vspace{2pt}
+    \captext{Storyboard final - extrait du rapport (2024).}
+  \end{outlinepanel}
+\end{minipage}
+
+\newpage
+% --------------------- PAGE 2 ---------------------
+\eyebrow{Carby \quad / \quad De la conception au delivery}\par\vspace{5pt}
+{\fontsize{22}{26}\selectfont\bfseries\color{navydark}Faire avancer le produit, arbitrer, apprendre.}\par\vspace{7pt}
+\color{border}\rule{\linewidth}{.7pt}\color{ink}
+\vspace{14pt}
+\secname{02}{Quatre sprints pour un prototype fonctionnel}
+\bodytext{Trello a permis de répartir les tâches, de visualiser les points d'avancement et de suivre les éléments de front-end, de back-end et d'interface. Les priorités ont évolué au fil des difficultés rencontrées.}\par
+\vspace{10pt}
+\noindent\begin{minipage}[t]{.24\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.12cm,colback=bluewash]
+  \eyebrow{Sprint 1}\par\vspace{2pt}\captext{20--21 mai}\par\vspace{8pt}
+  \minihead{Poser le socle}
+  \bodytext{Dépôt Git, inscription et connexion, premières routes.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.24\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.12cm,colback=bluewash]
+  \eyebrow{Sprint 2}\par\vspace{2pt}\captext{22--23 mai}\par\vspace{8pt}
+  \minihead{Qualifier le profil}
+  \bodytext{Questionnaire et logique de profil environnemental.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.24\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.12cm,colback=bluewash]
+  \eyebrow{Sprint 3}\par\vspace{2pt}\captext{24--27 mai}\par\vspace{8pt}
+  \minihead{Motiver l'usage}
+  \bodytext{Objectifs quotidiens, progression, badges et XP.}
+  \end{panel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.24\linewidth}
+  \vspace{0pt}
+  \begin{panel}[height=3.12cm,colback=bluewash]
+  \eyebrow{Sprint 4}\par\vspace{2pt}\captext{28--30 mai}\par\vspace{8pt}
+  \minihead{Finaliser le cœur}
+  \bodytext{Articles via API, finitions et communauté simplifiée.}
+  \end{panel}
+\end{minipage}
+\vspace{11pt}
+
+\secname{03}{Un arbitrage concret : réduire le périmètre « communauté »}
+\noindent\begin{minipage}[t]{.54\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[left=7pt,right=7pt,top=7pt,bottom=7pt]
+  \centering
+  \includegraphics[width=\linewidth]{\ImgTrello}\par\vspace{5pt}
+  \captext{Capture du tableau Trello utilisée pour planifier les sprints.}
+  \end{outlinepanel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.43\linewidth}
+  \vspace{0pt}
+  \begin{panel}[colback=light]
+  \eyebrow{Contrainte}\par\vspace{6pt}
+  \bodytext{La fonctionnalité communautaire initialement envisagée dépassait le temps disponible.}\par\vspace{9pt}
+  \eyebrow{Choix collectif}\par\vspace{6pt}
+  \bodytext{Conserver la \textbf{publication simple de messages} et reporter les interactions plus avancées.}\par\vspace{9pt}
+  \eyebrow{Ce que cela illustre}\par\vspace{5pt}
+  \bodytext{La nécessité d'arbitrer entre \textbf{valeur d'usage}, complexité technique et délai.}
+  \end{panel}
+\end{minipage}
+\vspace{11pt}
+
+\secname{04}{Résultat, limites et apprentissages}
+\noindent\begin{minipage}[t]{.49\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[height=4.05cm]
+   \minihead{Résultat du projet}
+   \begin{itemize}
+    \item \bodytext{Un prototype intégrant un profil utilisateur et des objectifs quotidiens.}
+    \item \bodytext{Un système de progression : points d'expérience, niveaux et badges.}
+    \item \bodytext{Une rubrique d'articles et une fonctionnalité communautaire limitée.}
+   \end{itemize}
+  \end{outlinepanel}
+\end{minipage}\hfill
+\begin{minipage}[t]{.49\linewidth}
+  \vspace{0pt}
+  \begin{outlinepanel}[height=4.05cm]
+   \minihead{Limites assumées}
+   \begin{itemize}
+    \item \bodytext{Le périmètre « communauté » a été réduit pour terminer le projet.}
+    \item \bodytext{Les tests automatisés envisagés en TDD n'ont pas pu être mis en œuvre dans le délai.}
+    \item \bodytext{Le rapport ne présente pas de données d'adoption en conditions réelles.}
+   \end{itemize}
+  \end{outlinepanel}
+\end{minipage}
+\vspace{12pt}
+\begin{panel}[colback=bluewash]
+  \minihead{Ce que je retiens pour le Product Ownership}
+  \bodytext{\textbf{Écouter avant de concevoir ;} rendre les décisions visibles dans un outil partagé ; \textbf{prioriser un périmètre réaliste} ; anticiper la validation et la qualité dès le cadrage. Cette expérience m'a donné envie d'évoluer à l'interface des utilisateurs, du métier et des équipes techniques.}
+\end{panel}
+\vspace{6pt}
+\captext{\textbf{Méthodes et outils :} storyboards, user journeys, wireframes, Figma, Miro, Trello, Agile/Scrum, Git/GitHub, React Native, Node.js/Express, MongoDB, API REST.}\par\vspace{5pt}
+\captext{\textbf{Traces du projet :} \href{https://github.com/blenkcode/carby-frontend}{github.com/blenkcode/carby-frontend} \;\textbar\; \href{https://github.com/blenkcode/carby-backend}{github.com/blenkcode/carby-backend} \;\textbar\; \href{https://portfoliogaelvbn.vercel.app/}{Portfolio Gaël Vanbeveren}.}
+\end{document}
